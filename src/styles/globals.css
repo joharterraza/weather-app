@@ -1,0 +1,14 @@
+:root {
+    /*Sizes*/
+    --weather-header-height: 60px;
+
+    /*Colors*/
+    --weather-main-color: #1D71F2;
+
+    /*Fonts*/
+    --weather-main-font: 'Poppins', Helvetica ,'Roboto',Arial;
+}
+
+body {
+    margin: 0;
+}
