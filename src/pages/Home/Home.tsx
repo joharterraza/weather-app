@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import WeatherInput from "../../components/WeatherInput/WeatherInput";
 import { CurrentWeather } from "../../interfaces/weather";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
+import './Home.css';
 
 const Home: React.FC = () => {
     const [isSearchTriggered, setIsSearchTriggered] = useState<Boolean>(false);
@@ -20,7 +21,7 @@ const Home: React.FC = () => {
                     {cityResult ? (
                         <WeatherCard weatherInfo={cityResult}/>
                     ) : (
-                        <p>No city result available.</p>
+                        <p className="not-found">No city result available.</p>
                     )}
                 </aside>
             )}

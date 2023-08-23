@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import weatherAPI from '../../services/weather';
 import { CurrentWeather } from '../../interfaces/weather';
+import './WeatherInput.css'
 
 interface WeatherInputProps {
     searchHandler: (searchResult: CurrentWeather | null) => void
@@ -24,10 +25,9 @@ const WeatherInput: React.FC<WeatherInputProps> = ({searchHandler}) => {
         }      
     }
     return (
-        <div className='inputContainer'>
-            <label>Search city</label>
-            <input type='text' placeholder='Type a city name' value={cityValue} onChange={handleInputChange}/>
-            <button onClick={searchOnClick}>Search</button>
+        <div className='inputContainer'>            
+            <input type='text' placeholder='Type a city name' value={cityValue} onChange={handleInputChange} className='cityInput'/>
+            <button onClick={searchOnClick} className='buttonSearch'>Search</button>
         </div>
     )
 } 

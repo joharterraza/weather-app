@@ -1,5 +1,6 @@
 import React from "react";
 import { CurrentWeather } from "../../interfaces/weather";
+import './WeatherCard.css'
 
 interface WeatherCardProps {
     weatherInfo: CurrentWeather | null
