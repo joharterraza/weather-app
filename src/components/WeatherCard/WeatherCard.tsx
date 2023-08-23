@@ -8,6 +8,7 @@ interface WeatherCardProps {
 const WeatherCard: React.FC<WeatherCardProps> = ({weatherInfo}) => {
     return (
         <div className="weatherCard">
+            <p>Date: {weatherInfo?.date} </p>
             <p>City: {weatherInfo?.cityName}</p>
             <p>Temp: {weatherInfo?.currentTemp}</p>
             <p>Max temp: {weatherInfo?.maxTemp}</p>
