@@ -1,0 +1,17 @@
+.toggler_icon {
+    width: 24px;
+    height: 24px;    
+    background-color: white;
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.dark {
+    mask: url('../../assets/icons/sun.svg');
+}
+
+.light {
+    mask: url('../../assets/icons/moon.svg');
+}
