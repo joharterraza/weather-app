@@ -15,5 +15,14 @@ header {
 .content {
     min-height: calc(100vh - var(--weather-header-height) - 16px - 16px);
     padding: 16px;
+    
 }
+
+@media (min-width: 768px) {
+    .content {
+        max-width: 768px;
+        margin: 0 auto;
+    }
+}
+
 
