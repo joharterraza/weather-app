@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { CurrentWeather } from '../interfaces/weather';
+import { convertToDate } from '../utils/convertDate';
 
 const APIKey = '7d8d884865adfc12053ce680debffb04';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/';
@@ -16,7 +17,8 @@ const client = {
                     currentTemp: response.data.main.temp,
                     maxTemp: response.data.main.temp_max,
                     minTemp: response.data.main.temp_min,
-                    humidity: response.data.main.humidity
+                    humidity: response.data.main.humidity,
+                    date: convertToDate(response.data.dt)
                 }
             }
             return cityInfo;
@@ -24,7 +26,7 @@ const client = {
             throw error;
         }
         
-    }
+    }    
 }
 
 export default client;
