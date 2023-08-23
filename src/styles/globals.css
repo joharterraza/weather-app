@@ -1,14 +1,32 @@
 :root {
     /*Sizes*/
-    --weather-header-height: 60px;
-
-    /*Colors*/
-    --weather-main-color: #1D71F2;
+    --weather-header-height: 60px;  
 
     /*Fonts*/
     --weather-main-font: 'Poppins', Helvetica ,'Roboto',Arial;
 }
 
+:root[data-color-mode="light"] {
+    /*Colors*/
+    --weather-header-bg: #48484a;
+    --weather-content-bg: #f2f2f2;
+    --weather-card-bg: #48484a;
+    --weather-font-color: #000000;
+}
+
+:root[data-color-mode="dark"] {
+    /*Colors*/
+    --weather-header-bg: #48484a;
+    --weather-content-bg: #666666;
+    --weather-card-bg: rgb(241, 93, 70);
+    --weather-font-color: #ffffff;
+}
+
 body {
     margin: 0;
+    background-color: var(--weather-content-bg);  
+}
+
+*:focus {
+    outline: none;
 }

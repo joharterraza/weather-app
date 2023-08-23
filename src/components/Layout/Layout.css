@@ -6,16 +6,16 @@
 
 header {
     padding: 0 16px;
-    background-color: var(--weather-main-color);
+    background-color: var(--weather-header-bg);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white;
 }
 
 .content {
     min-height: calc(100vh - var(--weather-header-height) - 16px - 16px);
-    padding: 16px;
-    
+    padding: 16px;  
 }
 
 @media (min-width: 768px) {

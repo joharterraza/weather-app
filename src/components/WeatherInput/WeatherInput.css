@@ -1,0 +1,31 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cityInput, .buttonSearch {
+    border: none;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+.buttonSearch {
+    background-color: var(--weather-header-bg);
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .inputContainer {
+        flex-direction: row;
+        gap: 0;        
+    }
+
+    .cityInput {
+        border-radius: 2px 0 0 2px;
+    }
+    .buttonSearch {
+        border-radius: 0 2px 2px 0;
+    }
+}
