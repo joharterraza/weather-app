@@ -1,9 +1,10 @@
 import React from "react";
 import WeatherInput from "../../components/WeatherInput/WeatherInput";
+import { CurrentWeather } from "../../interfaces/weather";
 
 const Home: React.FC = () => {
     
-    function showData(data: string) {
+    function showData(data: CurrentWeather | null) {
        console.log(data)
     }
     return (

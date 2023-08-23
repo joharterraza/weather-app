@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import weatherAPI from '../../services/weather';
+import { CurrentWeather } from '../../interfaces/weather';
 
 interface WeatherInputProps {
-    searchHandler: (city: string) => void
+    searchHandler: (searchResult: CurrentWeather | null) => void
 }
 
 const WeatherInput: React.FC<WeatherInputProps> = ({searchHandler}) => {
@@ -13,11 +14,13 @@ const WeatherInput: React.FC<WeatherInputProps> = ({searchHandler}) => {
     };
 
     async function searchOnClick() {
+        let result = null;
         try {
-            const response = await weatherAPI.getCurrentWeather(cityValue);
-            console.log(response)
+            const response = await weatherAPI.getCurrentWeather(cityValue);  
+            result = response;
+            searchHandler(result);          
         } catch ( error ) {
-            console.log(error)
+           searchHandler(result);
         }      
     }
     return (
