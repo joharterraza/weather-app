@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import weatherAPI from '../../services/weather';
 
 interface WeatherInputProps {
     searchHandler: (city: string) => void
@@ -11,8 +12,13 @@ const WeatherInput: React.FC<WeatherInputProps> = ({searchHandler}) => {
         setCityValue(event.target.value);       
     };
 
-    function searchOnClick() {
-        searchHandler(cityValue)
+    async function searchOnClick() {
+        try {
+            const response = await weatherAPI.getCurrentWeather(cityValue);
+            console.log(response)
+        } catch ( error ) {
+            console.log(error)
+        }      
     }
     return (
         <div className='inputContainer'>
