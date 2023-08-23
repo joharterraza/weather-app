@@ -18,7 +18,9 @@ const client = {
                     maxTemp: response.data.main.temp_max,
                     minTemp: response.data.main.temp_min,
                     humidity: response.data.main.humidity,
-                    date: convertToDate(response.data.dt)
+                    date: convertToDate(response.data.dt),
+                    country: response.data.sys.country ? response.data.sys.country : '',
+                    description: response.data?.weather[0].description ? response.data?.weather[0].description : ''
                 }
             }
             return cityInfo;

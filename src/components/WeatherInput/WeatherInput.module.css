@@ -14,16 +14,18 @@
 .buttonSearch {
     background-color: var(--weather-header-bg);
     color: white;
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
     .inputContainer {
         flex-direction: row;
-        gap: 0;        
+        gap: 0;      
     }
 
     .cityInput {
         border-radius: 2px 0 0 2px;
+        width: 100%;  
     }
     .buttonSearch {
         border-radius: 0 2px 2px 0;

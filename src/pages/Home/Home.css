@@ -1,7 +1,0 @@
-.homePage {
-    display: grid;
-    gap: 16px;
-}
-.not-found {
-    color: var(--weather-font-color);
-}

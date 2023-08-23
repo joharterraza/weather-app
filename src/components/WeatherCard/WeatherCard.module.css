@@ -1,0 +1,50 @@
+.weatherCard {
+    color: var(--weather-font-color);
+    padding: 16px;
+    border-radius: 2px;
+    display: grid;
+    gap: 16px;
+    background-color: var(--weather-card-bg);    
+    border-radius: 8px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;   
+    gap: 16px; 
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+}
+
+.current {
+    display: flex;
+    flex-direction: column;
+}
+
+.currentTemp { 
+    font-size: 40px;
+    align-self: center;
+    justify-self: center;
+}
+
+.details {
+    display: flex;    
+    gap: 16px;
+    flex-wrap: wrap;
+    max-width: 300px;
+}
+
+@media (min-width: 768px) {
+    .content {
+        flex-direction: column;
+        justify-content: start;
+    }
+    
+    .description {
+        text-align: center;
+    }
+}
+

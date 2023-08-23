@@ -1,0 +1,10 @@
+.homePage {
+    display: grid;
+    gap: 16px;
+    grid-auto-rows: max-content;
+}
+.not_found {
+    color: var(--weather-font-color);
+    text-align: center;
+    font-weight: 700;
+}

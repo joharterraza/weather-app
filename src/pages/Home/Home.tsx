@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import WeatherInput from "../../components/WeatherInput/WeatherInput";
 import { CurrentWeather } from "../../interfaces/weather";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
-import './Home.css';
+import styles from './Home.module.css';
 
 const Home: React.FC = () => {
     const [isSearchTriggered, setIsSearchTriggered] = useState<Boolean>(false);
@@ -14,14 +14,14 @@ const Home: React.FC = () => {
     }
 
     return (
-        <div className="homePage">
+        <div className={styles.homePage}>
             <WeatherInput searchHandler={(data) => showData(data)}/>
             {isSearchTriggered && (
                 <aside>                    
                     {cityResult ? (
                         <WeatherCard weatherInfo={cityResult}/>
                     ) : (
-                        <p className="not-found">No city result available.</p>
+                        <p className={styles.not_found}>No city result available.</p>
                     )}
                 </aside>
             )}

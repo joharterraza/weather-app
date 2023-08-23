@@ -1,5 +1,5 @@
 import React from 'react';
-import './Layout.css';
+import styles from './Layout.module.css';
 
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
@@ -9,12 +9,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ( {children} ) => {
     return (
-        <div className='layout'>
+        <div className={styles.layout}>
             <header>
                 <span>Weather app</span>
                 <ThemeToggler />
             </header>
-            <main className='content'>{ children }</main>
+            <main className={styles.content}>{ children }</main>
         </div>
     )
 }

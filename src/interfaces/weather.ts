@@ -3,6 +3,8 @@ export interface CurrentWeather {
     currentTemp: number,
     maxTemp: number,
     minTemp: number,
+    description: string
     humidity: number
     date: string | null
+    country: string
 }
