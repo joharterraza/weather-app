@@ -12,6 +12,7 @@ const Home: React.FC = () => {
         validateLastSearch();
     }, [])
 
+    //Get from local storage last search
     function validateLastSearch() {
         let lastSearch = localStorage.getItem("lastWeatherSearch");
 
@@ -27,6 +28,7 @@ const Home: React.FC = () => {
         }
     }
 
+    //Receive search results
     function showData(data: SearchResults) {
         setResults(data);
     }

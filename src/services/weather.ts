@@ -6,6 +6,7 @@ const APIKey = '7d8d884865adfc12053ce680debffb04';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/';
 
 const client = {
+    //Get current weather from api
     async getCurrentWeather(cityName: string): Promise<CurrentWeather | null> {
         try {
             const response = await axios.get(`${apiUrl}weather?q=${cityName}&appid=${APIKey}&units=metric`);
@@ -29,6 +30,7 @@ const client = {
         }        
     },
 
+    //Get forecast from api
     async getForecasts(cityName: string): Promise<CurrentWeather[] | null> {
         const response = await axios.get(`${apiUrl}forecast?q=${cityName}&appid=${APIKey}&units=metric`);        
 

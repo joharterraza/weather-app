@@ -7,6 +7,7 @@ import Home from './pages/Home/Home';
 const App: React.FC = () => {
   const dispatch = useDispatch(); 
 
+  //Set default theme if is not
   useEffect(() => {
     dispatch({ type: 'INIT_THEME' }); 
   }, [])

@@ -4,6 +4,7 @@ import { useTheme } from '../../store/hooks/useTheme';
 import styles from './ThemeToggler.module.css'
 
 const ThemeToggler: React.FC = () => {  
+    //Using reducer to manage theme state
     const themeStore = useTheme(); 
     const dispatch = useDispatch(); 
 

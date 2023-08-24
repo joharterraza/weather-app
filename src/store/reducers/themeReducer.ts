@@ -6,6 +6,7 @@ const initialState: ThemeState = {
     darkMode: false,
 };
 
+//Init default theme
 function initTheme() {
     let theme = 'dark';
     const html = document.querySelector("html");
@@ -24,6 +25,7 @@ function initTheme() {
     return theme
 }
 
+//Set color mode attribute to html tag
 function changeTheme() {    
     const html = document.querySelector("html");
     let theme = 'dark';
@@ -41,7 +43,7 @@ function changeTheme() {
     return theme
 }  
     
-
+//Change state depending on actions
 const themeReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case 'TOGGLE_THEME':                  

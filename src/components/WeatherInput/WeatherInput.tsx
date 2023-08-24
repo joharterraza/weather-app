@@ -14,6 +14,7 @@ const WeatherInput: React.FC<WeatherInputProps> = ({ searchHandler }) => {
         setCityValue(event.target.value);
     };
 
+    //Build the variable to emit { searchResults }
     async function searchOnClick() {
         const [currentWeatherResult, forecastsResult] = await Promise.all([
             currentWeatherHandler(),
@@ -28,6 +29,7 @@ const WeatherInput: React.FC<WeatherInputProps> = ({ searchHandler }) => {
         searchHandler(combinedResults);
     }
 
+    //Get current weather
     async function currentWeatherHandler() {
         try {
             const response = await weatherAPI.getCurrentWeather(cityValue);
@@ -38,6 +40,7 @@ const WeatherInput: React.FC<WeatherInputProps> = ({ searchHandler }) => {
         }
     }
 
+    //Get forecast
     async function forecastsHandler() {
         try {
             const response = await weatherAPI.getForecasts(cityValue);
@@ -47,6 +50,7 @@ const WeatherInput: React.FC<WeatherInputProps> = ({ searchHandler }) => {
         }
     }
 
+    //Save last search in local storage
     function saveLastSearch(city: CurrentWeather | null) {
         if (!city) {
             localStorage.removeItem("lastWeatherSearch");

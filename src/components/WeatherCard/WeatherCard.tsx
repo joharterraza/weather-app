@@ -7,6 +7,7 @@ interface WeatherCardProps {
 
 const WeatherCard: React.FC<WeatherCardProps> = ({weatherInfo}) => {
 
+    //Depending of the weather, the card is going to show a representative image
     const bgImage = (temperature: number) =>{
         return (
             !temperature ? '' :
