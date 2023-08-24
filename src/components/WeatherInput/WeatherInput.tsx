@@ -19,11 +19,23 @@ const WeatherInput: React.FC<WeatherInputProps> = ({searchHandler}) => {
         try {
             const response = await weatherAPI.getCurrentWeather(cityValue);  
             result = response;
-            searchHandler(result);          
+            searchHandler(result);  
+            saveLastSearch(result);        
         } catch ( error ) {
            searchHandler(result);
+           saveLastSearch(result);
         }      
+    }    
+
+    function saveLastSearch(city: CurrentWeather | null) {
+        if (!city) {
+            localStorage.removeItem("lastWeatherSearch");
+        } else {
+            const stringJson = JSON.stringify(city);
+            localStorage.setItem("lastWeatherSearch", stringJson);
+        }
     }
+
     return (
         <div className={styles.inputContainer}>            
             <input type='text' placeholder='Type a city name' value={cityValue} onChange={handleInputChange} className={styles.cityInput}/>

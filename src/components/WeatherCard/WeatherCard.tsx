@@ -9,8 +9,8 @@ const WeatherCard: React.FC<WeatherCardProps> = ({weatherInfo}) => {
     return (
         <div className={styles.weatherCard}>
             <div className={styles.title}>
-                <span>{weatherInfo?.date}</span>
-                <strong>
+                <strong className={styles.date}>{weatherInfo?.date}</strong>
+                <strong className={styles.city}>
                     {weatherInfo?.cityName}
                     {weatherInfo?.country ? `,${weatherInfo?.country}` : ''}
                 </strong>

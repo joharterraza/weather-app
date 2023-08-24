@@ -1,7 +1,31 @@
+.page_background {
+    background-image: none;
+    height: 100%;
+}
+
+.hot {
+    background-image: url('../../assets/hot.jpg');
+    background-position: center;
+    border-radius: 5px;
+}
+
+.normal {
+    background-image: url('../../assets/spring.jpg');
+    background-position: center;
+    border-radius: 5px;
+}
+
+.cold {
+    background-image: url('../../assets/winter.jpg');
+    background-position: center;
+    border-radius: 5px;
+}
+
 .homePage {
     display: grid;
     gap: 16px;
     grid-auto-rows: max-content;
+    padding: 16px;
 }
 .not_found {
     color: var(--weather-font-color);

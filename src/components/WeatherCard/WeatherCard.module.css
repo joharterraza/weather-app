@@ -4,7 +4,7 @@
     border-radius: 2px;
     display: grid;
     gap: 16px;
-    background-color: var(--weather-card-bg);    
+    background-color: var(--weather-card-bg);
     border-radius: 8px;
 }
 
@@ -17,6 +17,10 @@
 .title {
     display: flex;
     flex-direction: column;
+}
+
+.city {
+    font-size: 40px;
 }
 
 .current {
@@ -33,18 +37,27 @@
 .details {
     display: flex;    
     gap: 16px;
-    flex-wrap: wrap;
-    max-width: 300px;
+    flex-wrap: wrap;   
+    max-width: 300px; 
 }
 
 @media (min-width: 768px) {
     .content {
         flex-direction: column;
-        justify-content: start;
+        justify-content: center;
+    }
+
+    .title {
+        justify-content: center;
     }
     
     .description {
         text-align: center;
+    }
+
+    .details {
+        justify-content: center;
+        max-width: 100%;
     }
 }
 

@@ -30,3 +30,10 @@ body {
 *:focus {
     outline: none;
 }
+
+@media (min-width: 768px) {
+    .page {
+        max-width: 768px;
+        margin: 0 auto;
+    }
+}
