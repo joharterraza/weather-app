@@ -2,8 +2,8 @@ import axios from 'axios';
 import { CurrentWeather } from '../interfaces/weather';
 import { convertToDate } from '../utils/convertDate';
 
-const APIKey = '7d8d884865adfc12053ce680debffb04';
-const apiUrl = 'https://api.openweathermap.org/data/2.5/';
+const APIKey = process.env.REACT_APP_API_KEY;
+const apiUrl = process.env.REACT_APP_BACKEND_URL;
 
 const client = {
     //Get current weather from api
