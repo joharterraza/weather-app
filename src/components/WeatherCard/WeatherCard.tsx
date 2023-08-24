@@ -2,7 +2,7 @@ import React from "react";
 import { CurrentWeather } from "../../interfaces/weather";
 import styles from './WeatherCard.module.css';
 interface WeatherCardProps {
-    weatherInfo: CurrentWeather | null
+    weatherInfo: CurrentWeather | null | undefined;
 }
 
 const WeatherCard: React.FC<WeatherCardProps> = ({weatherInfo}) => {

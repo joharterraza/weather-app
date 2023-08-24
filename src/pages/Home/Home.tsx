@@ -7,6 +7,7 @@ import styles from './Home.module.css';
 
 const Home: React.FC = () => {
     const [results, setResults] = useState<SearchResults>({ currentWeather: null, forecasts: null });
+    const [ isSearchTriggered, setIsSearchTriggered ] = useState<Boolean>(false);
 
     useEffect(() => {
         validateLastSearch();
@@ -31,6 +32,7 @@ const Home: React.FC = () => {
     //Receive search results
     function showData(data: SearchResults) {
         setResults(data);
+        setIsSearchTriggered(true)
     }
 
     return (
@@ -42,7 +44,9 @@ const Home: React.FC = () => {
                     <WeatherCard weatherInfo={results.currentWeather} />
                 </aside>
             ) : (
-                <p className={styles.not_found}>No city result available.</p>
+                isSearchTriggered && (
+                    <p className={styles.not_found}>No city result available.</p>
+                )                
             )}
 
             {results.forecasts && (
