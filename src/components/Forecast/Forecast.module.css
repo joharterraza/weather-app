@@ -1,0 +1,15 @@
+.forecast_container {
+    display: grid;
+    gap: 16px;
+}
+
+.forecast_date {
+    font-size: 20px;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .forecast_container {
+       grid-template-columns: 1fr 1fr;
+    }
+}

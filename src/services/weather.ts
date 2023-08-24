@@ -26,9 +26,37 @@ const client = {
             return cityInfo;
         } catch (error) {
             throw error;
-        }
-        
-    }    
+        }        
+    },
+
+    async getForecasts(cityName: string): Promise<CurrentWeather[] | null> {
+        const response = await axios.get(`${apiUrl}forecast?q=${cityName}&appid=${APIKey}&units=metric`);        
+
+        try {
+            const forecastArray: CurrentWeather[] = [];
+            if (response?.data?.list) {
+                response.data.list.forEach((forecast: any) => {
+                    const cityObject = {
+                        cityName: response.data.city.name,
+                        currentTemp: forecast?.main.temp,
+                        maxTemp: forecast?.main.temp_max,
+                        minTemp: forecast?.main.temp_min,
+                        humidity: forecast?.main.humidity,
+                        date: forecast.dt_txt,
+                        country:  response.data.city.country ?  response.data.city.country : '',
+                        description: forecast.weather[0].description ? forecast.weather[0].description : ''
+                    }
+    
+                    forecastArray.push(cityObject);
+                });
+            }
+    
+            return forecastArray;
+            
+        } catch (error) {
+            throw error;
+        }       
+    }
 }
 
 export default client;

@@ -1,31 +1,51 @@
 import React, { useState } from 'react';
 import weatherAPI from '../../services/weather';
-import { CurrentWeather } from '../../interfaces/weather';
+import { CurrentWeather, SearchResults } from '../../interfaces/weather';
 import styles from './WeatherInput.module.css';
 
 interface WeatherInputProps {
-    searchHandler: (searchResult: CurrentWeather | null) => void
+    searchHandler: (searchResult: SearchResults) => void
 }
 
-const WeatherInput: React.FC<WeatherInputProps> = ({searchHandler}) => {
+const WeatherInput: React.FC<WeatherInputProps> = ({ searchHandler }) => {
     const [cityValue, setCityValue] = useState<string>('');
 
-    function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {        
-        setCityValue(event.target.value);       
+    function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+        setCityValue(event.target.value);
     };
 
     async function searchOnClick() {
-        let result = null;
+        const [currentWeatherResult, forecastsResult] = await Promise.all([
+            currentWeatherHandler(),
+            forecastsHandler()
+        ]);
+
+        const combinedResults = {
+            currentWeather: currentWeatherResult,
+            forecasts: forecastsResult
+        };
+
+        searchHandler(combinedResults);
+    }
+
+    async function currentWeatherHandler() {
         try {
-            const response = await weatherAPI.getCurrentWeather(cityValue);  
-            result = response;
-            searchHandler(result);  
-            saveLastSearch(result);        
-        } catch ( error ) {
-           searchHandler(result);
-           saveLastSearch(result);
-        }      
-    }    
+            const response = await weatherAPI.getCurrentWeather(cityValue);
+            saveLastSearch(response);
+            return response
+        } catch (error) {
+            saveLastSearch(null);
+        }
+    }
+
+    async function forecastsHandler() {
+        try {
+            const response = await weatherAPI.getForecasts(cityValue);
+            return response
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     function saveLastSearch(city: CurrentWeather | null) {
         if (!city) {
@@ -37,11 +57,11 @@ const WeatherInput: React.FC<WeatherInputProps> = ({searchHandler}) => {
     }
 
     return (
-        <div className={styles.inputContainer}>            
-            <input type='text' placeholder='Type a city name' value={cityValue} onChange={handleInputChange} className={styles.cityInput}/>
+        <div className={styles.inputContainer}>
+            <input type='text' placeholder='Type a city name' value={cityValue} onChange={handleInputChange} className={styles.cityInput} />
             <button onClick={searchOnClick} className={styles.buttonSearch}>Search</button>
         </div>
     )
-} 
+}
 
 export default WeatherInput;

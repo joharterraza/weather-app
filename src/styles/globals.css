@@ -14,7 +14,7 @@
     --weather-font-color: #000000;
     --weather-card-details-color: #6495ed; 
     --weather-card-image-text: #ffffff;
-    --weather-button-bg: navy;
+    --weather-button-bg: #4682b4;
     --weather-button-font-color: #ffffff;
 }
 
@@ -44,4 +44,8 @@ body {
         max-width: 768px;
         margin: 0 auto;
     }
+}
+
+span, strong {
+    word-break: break-word;
 }

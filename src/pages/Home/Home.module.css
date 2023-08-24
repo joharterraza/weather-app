@@ -1,16 +1,21 @@
-.page_background {
-    background-image: none;
-    height: 100%;
-}
-
 .homePage {
     display: grid;
     gap: 16px;
     grid-auto-rows: max-content;
     padding: 16px;
 }
+
+.weather_title {
+    font-size: 40px;
+    color: white;
+}
 .not_found {
-    color: var(--weather-font-color);
+    color: white;
     text-align: center;
     font-weight: 700;
+}
+
+.title_forecast {
+    margin-bottom: 16px;
+    display: block;
 }

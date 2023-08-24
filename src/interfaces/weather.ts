@@ -8,3 +8,8 @@ export interface CurrentWeather {
     date: string | null
     country: string
 }
+
+export interface SearchResults {
+    currentWeather: CurrentWeather | null | undefined,
+    forecasts: CurrentWeather[] | null | undefined
+}

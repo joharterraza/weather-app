@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import WeatherInput from "../../components/WeatherInput/WeatherInput";
-import { CurrentWeather } from "../../interfaces/weather";
+import { SearchResults } from "../../interfaces/weather";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
+import Forecast from "../../components/Forecast/Forecast";
 import styles from './Home.module.css';
 
-const Home: React.FC = () => {    
-    const [cityResult, setCityResult] = useState<CurrentWeather | null>(null);
+const Home: React.FC = () => {
+    const [results, setResults] = useState<SearchResults>({ currentWeather: null, forecasts: null });
 
     useEffect(() => {
         validateLastSearch();
@@ -17,35 +18,37 @@ const Home: React.FC = () => {
         if (lastSearch) {
             try {
                 const parsedJson = JSON.parse(lastSearch);
-                setCityResult(parsedJson);
+                const resultsCopy = { ...results }
+                resultsCopy.currentWeather = parsedJson;
+                setResults(resultsCopy);
             } catch (error) {
                 console.log(error);
             }
         }
     }
-    
-    function showData(data: CurrentWeather | null) {
-       setCityResult(data);       
-    }
 
-    const bgImage = (temperature: number) =>{
-        return (
-            !temperature ? '' :
-            temperature > 28 ? 'hot' :
-            temperature > 20 && temperature < 28 ? 'normal' : 'cold'
-        );
+    function showData(data: SearchResults) {
+        setResults(data);
     }
 
     return (
-        <div className={`${styles.page_background} ${cityResult ? styles[bgImage(cityResult.currentTemp)] : ''}`}>
-            <div className={`${styles.homePage} page`}>
-                 <WeatherInput searchHandler={(data) => showData(data)}/>
-                {cityResult ? (
-                    <WeatherCard weatherInfo={cityResult}/>
-                ) : (
-                    <p className={styles.not_found}>No city result available.</p>
-                )}
-            </div>           
+        <div className={`${styles.homePage} page`}>
+            <WeatherInput searchHandler={(data) => showData(data)} />
+            {results.currentWeather ? (
+                <aside>
+                    <strong className={styles.weather_title}>Current weather</strong>
+                    <WeatherCard weatherInfo={results.currentWeather} />
+                </aside>
+            ) : (
+                <p className={styles.not_found}>No city result available.</p>
+            )}
+
+            {results.forecasts && (
+                <aside>
+                    <strong className={`${styles.weather_title} ${styles.title_forecast}`}>Forecast 3 hour / step</strong>
+                    <Forecast forecast={results.forecasts} />
+                </aside>
+            )}
         </div>
     )
 }
