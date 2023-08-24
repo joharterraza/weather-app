@@ -12,8 +12,8 @@
 }
 
 .buttonSearch {
-    background-color: var(--weather-header-bg);
-    color: white;
+    background-color: var(--weather-button-bg);
+    color: var(--weather-button-font-color);    
     cursor: pointer;
 }
 

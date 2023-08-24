@@ -6,31 +6,38 @@ interface WeatherCardProps {
 }
 
 const WeatherCard: React.FC<WeatherCardProps> = ({weatherInfo}) => {
+
+    const bgImage = (temperature: number) =>{
+        return (
+            !temperature ? '' :
+            temperature > 28 ? 'hot' :
+            temperature > 20 && temperature < 28 ? 'normal' : 'cold'
+        );
+    }
+
     return (
         <div className={styles.weatherCard}>
-            <div className={styles.title}>
-                <strong className={styles.date}>{weatherInfo?.date}</strong>
-                <strong className={styles.city}>
-                    {weatherInfo?.cityName}
-                    {weatherInfo?.country ? `,${weatherInfo?.country}` : ''}
-                </strong>
-            </div>  
-
-            <div className={styles.content}>
-                <div className={styles.current}>
-                    <strong className={styles.currentTemp}>{weatherInfo?.currentTemp}°C</strong>
-
-                    {weatherInfo?.description && (
-                        <strong className={styles.description}>{weatherInfo.description}</strong>
-                    )}
+            <div className={styles.title_container}>
+                <div className={`${styles.card_image} ${weatherInfo ? styles[bgImage(weatherInfo.currentTemp)] : ''}`}></div>
+                <div className={styles.text_container}>
+                    <div className={styles.title}>
+                        <strong className={styles.currentTemp}>{weatherInfo?.currentTemp}°C</strong>
+                        {weatherInfo?.description && (
+                            <strong className={styles.description}>{weatherInfo.description}</strong>
+                        )}
+                        <strong className={styles.city}>
+                            {weatherInfo?.cityName}
+                            {weatherInfo?.country ? `,${weatherInfo?.country}` : ''}
+                        </strong>
+                    </div>
                 </div>
-                
-                <div className={styles.details}>
-                    <span>Max temp: {weatherInfo?.maxTemp}°C</span>
-                    <span>Min temp: {weatherInfo?.minTemp}°C</span>
-                    <span>Humidity: {weatherInfo?.humidity}%</span>
-                </div>
-            </div>                  
+            </div>              
+
+            <div className={styles.details}>
+                <span>Max temperature: <strong>{weatherInfo?.maxTemp}°C</strong></span>
+                <span>Min temperature: <strong>{weatherInfo?.minTemp}°C</strong></span>
+                <span>Humidity: <strong>{weatherInfo?.humidity}%</strong></span>
+            </div>                 
         </div>
     )
 }

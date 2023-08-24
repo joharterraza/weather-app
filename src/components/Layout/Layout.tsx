@@ -11,7 +11,7 @@ const Layout: React.FC<LayoutProps> = ( {children} ) => {
     return (
         <div className={styles.layout}>
             <header>
-                <span>Weather app</span>
+                <strong>Weather app</strong>
                 <ThemeToggler />
             </header>
             <main className={styles.content}>{ children }</main>
